@@ -6,7 +6,58 @@ sede usando listas, diccionarios, funciones, ciclos y condicionales.
 
 from sedes import sedes
 
-print("la variadle sedes es tipo" , type(sedes).__add__name__)
-primer__emprendimiento = sedes[0]
-print ("tipo" , tipe(primer__emprendimiento))
-print("mondre",primer__emprendimiento[nomdre])
+def calcular_total(ventas): 
+    """Resibe una lista y retorna el total de ventas.""" 
+    return sum(ventas)
+
+def calcular_porcentaje_logro(total, meta):
+    """Calcula el porcentaje de cumplimiento de un meta"""
+    porcentaje = total / meta * 100
+    return porcentaje
+def calcular_clasificacion(porcentaje):
+    if porcentaje >= 100:
+        mensaje = "meta alcansada, puedes redisar porque hay ganancia"
+    elif porcentaje >= 90:
+        mensaje = "Urgente,hay una perdida lede"
+    else:
+        mensaje = "urgente, hay una perdida grande"
+    return mensaje
+
+def imprimir_reporte(datos_reporte):
+    """Imprimir el reporte final de ventas por emprendimiento"""
+
+
+    #encadesado
+    print("\nReporte Final")
+    print("_"*60)
+
+    for fila in datos_reporte:
+        print(f"sede: {fila["nombre"]}")
+        print(f"provincia: {fila["provincia"]}")
+        print(f"tipo {fila["tipo"]}")
+
+        print(f"total ventas semanal: ₡{fila["total"]:,.2f}")
+        print(f"cumplimiento de meta: {fila["porcentaje"]:,.2f}%" )
+        print(f"promedio diario: ₡{fila["total"] / 5:,.2f}")
+        print(fila["clasificacion"])
+        print("_"*60)
+
+reporte = []
+for emprendimiento in sedes:
+    ventas = emprendimiento["ventas"]
+    meta = emprendimiento["meta"]
+    nombre = emprendimiento["nombre"]
+    total_ventas = calcular_total(ventas)
+    porcentaje_emprendimiento = calcular_porcentaje_logro(total_ventas, meta)
+    clasificacion = calcular_clasificacion(porcentaje_emprendimiento)
+    reporte.append(
+        {
+            "nombre" : emprendimiento["nombre"],
+            "provincia" : emprendimiento["provincia"],
+            "tipo": emprendimiento["tipo"],
+            "total": total_ventas,
+            "porcentaje" : porcentaje_emprendimiento, 
+            "clasificacion": clasificacion
+        }
+    )  
+imprimir_reporte(reporte)
