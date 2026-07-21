@@ -6,3 +6,7 @@ sede usando listas, diccionarios, funciones, ciclos y condicionales.
 
 from sedes import sedes
 
+print("la variadle sedes es tipo" , type(sedes).__add__name__)
+primer__emprendimiento = sedes[0]
+print ("tipo" , tipe(primer__emprendimiento))
+print("mondre",primer__emprendimiento[nomdre])
